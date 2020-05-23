@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ProtobufInspector.ProtobufInspectorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProtobufInspector"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Height="Auto" Width="Auto">
+    <UserControl.Resources>
+        <SolidColorBrush
+                x:Key="ReadOnlyColor"
+                Color="{Binding Fiddler.CONFIG.colorDisableEdit}"/>
+    </UserControl.Resources>
+    <Grid>
+        
+            
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="125*" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="20*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="10*" MinHeight="20" MaxHeight="35" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="10*" MinHeight="20" MaxHeight="35"/>
+            <RowDefinition Height="150*" />
+        </Grid.RowDefinitions>
+        <TextBox Name="txtAssemblyFilePath" Grid.Row="1" Grid.Column="1" />
+        <Button Name="btnBrowse" Content="Browse" Grid.Row="1" Grid.Column="2" Margin="4,0,4,0" Click="btnBrowse_Click" />
+        <Button Name="btnLoad" Content="Load" Grid.Row="1" Grid.Column="3" Margin="4,0,4,0" Click="btnLoad_Click" />
+        <Label Content="Assembly Path" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ClassNames}" SelectedItem="{Binding SelectedClass}" IsTextSearchEnabled="True"/>
+        <Label Content="Class Name" Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <TextBlock ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="{StaticResource ReadOnlyColor}" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="355" Width="780"/>
+    </Grid>
+</UserControl>
